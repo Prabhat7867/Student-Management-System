@@ -1,0 +1,40 @@
+<h1>Student's dashboard</h1>
+
+
+<div *ngIf="students$ | async as students; else loading">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Father's Name</th>
+                <th>Standard</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let student of students">
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.fathersName}}</td>
+                <td>{{student.standard}}</td>
+                <td>{{student.email}}</td>
+                <td>
+                    <button>View</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+<button routerLink="/AddEdit">Add Student details</button>
+
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
